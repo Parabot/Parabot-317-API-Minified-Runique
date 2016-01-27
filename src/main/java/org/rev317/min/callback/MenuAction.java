@@ -31,22 +31,6 @@ public class MenuAction {
             }
         }
 
-        System.out.println(SceneObjects.getNearest()[0].getHash() >> 6 & 0x3);
-        System.out.println(SceneObjects.getNearest()[0].getHash() & 0x1F);
-        System.out.println(SceneObjects.getNearest()[0].getHash() >> 14 & 0x7FFF);
-
-        SceneObject[] objects = SceneObjects.getNearest();
-        if (objects == null || objects.length == 0)
-            return;
-
-        for (int i = objects.length - 1; i >= 0; i--) {
-            System.out.println(
-                    " ID: " + objects[i].getId() +
-                            " UID: " + objects[i].getHash() +
-                            " Location: " + objects[i].getLocation() +
-                            " Distance: " + objects[i].distanceTo());
-        }
-
         final GameActionEvent actionEvent = new GameActionEvent(actionId, action1, action2, action3, action4, index);
         ScriptEngine.getInstance().dispatch(actionEvent);
     }
