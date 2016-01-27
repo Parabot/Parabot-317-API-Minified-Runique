@@ -7,6 +7,7 @@ import org.parabot.environment.scripts.framework.SleepCondition;
 import org.rev317.min.Loader;
 import org.rev317.min.accessors.Interface;
 import org.rev317.min.api.wrappers.Item;
+import org.rev317.min.runique.ArrayTransformer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,7 +78,7 @@ public class Trading {
         Interface i;
         if ((i = Loader.getClient().getInterfaceCache()[interfaceID]) != null) {
             int[] items;
-            if ((items = i.getItems()) != null && items.length > 0) {
+            if ((items = ArrayTransformer.copyFromLongArray(i.getItems())) != null && items.length > 0) {
                 return items;
             }
         }
@@ -89,7 +90,7 @@ public class Trading {
 
         if ((i = Loader.getClient().getInterfaceCache()[interfaceID]) != null) {
             int[] stacks;
-            if ((stacks = i.getStackSizes()) != null && stacks.length > 0) {
+            if ((stacks = ArrayTransformer.copyFromLongArray(i.getStackSizes())) != null && stacks.length > 0) {
                 return stacks;
             }
         }

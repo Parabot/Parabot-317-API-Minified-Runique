@@ -10,8 +10,7 @@ import org.rev317.min.debug.DActions;
 import org.rev317.min.script.ScriptEngine;
 
 /**
- * @author Everel
- * @author Matt123337
+ * @author Everel, Matt123337, JKetelaar
  */
 public class MenuAction {
 

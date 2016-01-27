@@ -7,6 +7,7 @@ import org.parabot.environment.scripts.framework.SleepCondition;
 import org.rev317.min.Loader;
 import org.rev317.min.accessors.Interface;
 import org.rev317.min.api.wrappers.Item;
+import org.rev317.min.runique.ArrayTransformer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -95,8 +96,8 @@ public class Inventory {
             return -1;
         }
         int count = 0;
-        final int[] items = inventory.getItems();
-        final int[] stackSizes = includeStack ? inventory.getStackSizes() : null;
+        final int[] items = ArrayTransformer.copyFromLongArray(inventory.getItems());
+        final int[] stackSizes = ArrayTransformer.copyFromLongArray(includeStack ? inventory.getStackSizes() : null);
         for (int i = 0; i < items.length; i++) {
             if (items[i] > 0) {
                 count += includeStack ? stackSizes[i] : 1;
@@ -119,8 +120,8 @@ public class Inventory {
             return -1;
         }
         int count = 0;
-        final int[] items = inventory.getItems();
-        final int[] stackSizes = includeStack ? inventory.getStackSizes() : null;
+        final int[] items = ArrayTransformer.copyFromLongArray(inventory.getItems());
+        final int[] stackSizes = ArrayTransformer.copyFromLongArray(includeStack ? inventory.getStackSizes() : null);
         for (int i = 0; i < items.length; i++) {
             final int itemId = items[i];
             if (itemId > 0) {
@@ -179,8 +180,8 @@ public class Inventory {
         if (inventory == null) {
             return null;
         }
-        final int[] items = inventory.getItems();
-        final int[] stackSizes = inventory.getStackSizes();
+        final int[] items = ArrayTransformer.copyFromLongArray(inventory.getItems());
+        final int[] stackSizes = ArrayTransformer.copyFromLongArray(inventory.getStackSizes());
         final ArrayList<Item> invItems = new ArrayList<>(28);
         for (int i = 0; i < items.length; i++) {
             final int itemId = items[i];

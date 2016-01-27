@@ -8,6 +8,7 @@ import org.rev317.min.Loader;
 import org.rev317.min.api.wrappers.Item;
 import org.rev317.min.api.wrappers.Npc;
 import org.rev317.min.api.wrappers.SceneObject;
+import org.rev317.min.runique.ArrayTransformer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -231,7 +232,7 @@ public class Bank {
         if (!isOpen()) {
             return null;
         }
-        return Loader.getClient().getInterfaceCache()[settings.get("item_interface_id")].getItems();
+        return ArrayTransformer.copyFromLongArray(Loader.getClient().getInterfaceCache()[settings.get("item_interface_id")].getItems());
     }
 
     /**
@@ -243,7 +244,7 @@ public class Bank {
         if (!isOpen()) {
             return null;
         }
-        return Loader.getClient().getInterfaceCache()[settings.get("item_interface_id")].getStackSizes();
+        return ArrayTransformer.copyFromLongArray(Loader.getClient().getInterfaceCache()[settings.get("item_interface_id")].getStackSizes());
     }
 
     /**
