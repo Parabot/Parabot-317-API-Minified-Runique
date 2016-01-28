@@ -7,8 +7,6 @@ import org.parabot.core.ui.BotUI;
 import org.parabot.core.ui.components.GamePanel;
 import org.parabot.environment.input.Keyboard;
 import org.parabot.environment.input.Mouse;
-import org.rev317.min.Loader;
-import org.rev317.min.ui.BotMenu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,12 +33,12 @@ public class CustomFrame extends JFrame {
 
         final Context context = Context.getInstance();
         final Mouse mouse = new Mouse(BotUI.getInstance());
+        final Keyboard keyboard = new Keyboard(BotUI.getInstance());
         BotUI.getInstance().addMouseListener(mouse);
         BotUI.getInstance().addMouseMotionListener(mouse);
-        context.setMouse(mouse);
-
-        Keyboard keyboard = new Keyboard(BotUI.getInstance());
         BotUI.getInstance().addKeyListener(keyboard);
+
+        context.setMouse(mouse);
         context.setKeyboard(keyboard);
 
         BotDialog.getInstance().validate();
@@ -54,22 +52,22 @@ public class CustomFrame extends JFrame {
 
     @Override
     public void addMouseListener(MouseListener mouseListener) {
-        BotUI.getInstance().addMouseListener(mouseListener);
+        BotUI.getInstance().getContentPane().addMouseListener(mouseListener);
     }
 
     @Override
     public void addMouseMotionListener(MouseMotionListener mouseMotionListener) {
-        BotUI.getInstance().addMouseMotionListener(mouseMotionListener);
+        BotUI.getInstance().getContentPane().addMouseMotionListener(mouseMotionListener);
     }
 
     @Override
     public void addMouseWheelListener(MouseWheelListener mouseWheelListener) {
-        BotUI.getInstance().addMouseWheelListener(mouseWheelListener);
+        BotUI.getInstance().getContentPane().addMouseWheelListener(mouseWheelListener);
     }
 
     @Override
     public void addFocusListener(FocusListener focusListener) {
-        BotUI.getInstance().addFocusListener(focusListener);
+        BotUI.getInstance().getContentPane().addFocusListener(focusListener);
     }
 
     @Override
@@ -100,5 +98,18 @@ public class CustomFrame extends JFrame {
         bar.add(parabot);
 
         super.setMenuBar(bar);
+    }
+
+    private void addRuniqueBar(){
+        JMenu runique = new JMenu("Runique");
+        JMenuItem mouse = new JMenuItem("Enable mouse");
+        mouse.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Maybe have some nice actions here?
+            }
+        });
+        runique.add(mouse);
+        BotUI.getInstance().getJMenuBar().add(runique);
     }
 }
