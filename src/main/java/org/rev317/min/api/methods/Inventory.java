@@ -97,7 +97,7 @@ public class Inventory {
         }
         int count = 0;
         final int[] items = ArrayTransformer.copyFromLongArray(inventory.getItems());
-        final int[] stackSizes = ArrayTransformer.copyFromLongArray(includeStack ? inventory.getStackSizes() : null);
+        final int[] stackSizes = includeStack ? ArrayTransformer.copyFromLongArray(inventory.getStackSizes()) : null;
         for (int i = 0; i < items.length; i++) {
             if (items[i] > 0) {
                 count += includeStack ? stackSizes[i] : 1;
