@@ -20,7 +20,7 @@ public class CustomFrame extends JFrame {
     @Override
     public void setTitle(String title) {
         RefClass refClass = new RefClass(this);
-        final Object object = refClass.getField("j").asObject();
+        final Object object = refClass.getField("l").asObject();
         Context.getInstance().setClientInstance(object);
 
         super.setTitle("Parabot - Runique");
