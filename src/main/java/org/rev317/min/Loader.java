@@ -39,7 +39,7 @@ public class Loader extends ServerProvider {
         try {
             final Context context = Context.getInstance();
             final ASMClassLoader classLoader = context.getASMClassLoader();
-            Class<?> clazz = classLoader.loadClass("a.a.ub");
+            Class<?> clazz = classLoader.loadClass("a.a.eb");
             new RefClass(clazz).getMethod("main").invoke(new Object[] { new String[] { } });
 
         } catch (Throwable t) {
